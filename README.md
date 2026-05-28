@@ -77,12 +77,14 @@ Built in one day as a focused demonstration of modern AI engineering — clean a
 - Memory side panel with live count badge
 
 ---
+<p float="left">
+  <img src="screenshots/Screenshot 2026-05-28 at 3.43.58 PM.png" width="45%" />
+  <img src="screenshots/Screenshot 2026-05-28 at 3.50.11 PM.png" width="45%" />
+  <img src="screenshots/Screenshot 2026-05-28 at 3.53.43 PM.png" width="45%" />
+  <img src="screenshots/Screenshot 2026-05-28 at 3.54.37 PM.png" width="45%" />
+  <img src="screenshots/Screenshot 2026-05-28 at 3.54.55 PM.png" width="45%" />
+</p>
 
-![Demo Image](screenshots/Screenshot 2026-05-28 at 3.43.58 PM.png)
-![Demo Image](screenshots/Screenshot 2026-05-28 at 3.50.11 PM.png)
-![Demo Image](screenshots/Screenshot 2026-05-28 at 3.53.43 PM.png)
-![Demo Image](screenshots/Screenshot 2026-05-28 at 3.54.37 PM.png)
-![Demo Image](screenshots/Screenshot 2026-05-28 at 3.54.55 PM.png)
 
 ## Architecture
 
