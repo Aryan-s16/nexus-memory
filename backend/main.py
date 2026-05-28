@@ -1,0 +1,111 @@
+import os
+os.environ["ANONYMIZED_TELEMETRY"] = "false"
+os.environ["CHROMA_TELEMETRY"]     = "false"
+os.environ["POSTHOG_DISABLED"]     = "true"
+
+try:
+    import posthog
+    posthog.disabled = True
+    posthog.capture = lambda *args, **kwargs: None
+except Exception:
+    pass
+
+
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
+from contextlib import asynccontextmanager
+import logging
+
+from config import settings
+from database import init_db
+from routes import chat, upload, memory
+from services.llm import check_ollama_health
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s | %(levelname)s | %(name)s | %(message)s",
+    datefmt="%Y-%m-%d %H:%M:%S",
+)
+
+logger = logging.getLogger(__name__)
+
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # Startup
+    logger.info("🚀 Starting Nexus Memory API...")
+
+    # Initialize database
+    init_db()
+    logger.info("✅ Database initialized")
+
+    # Check Ollama health
+    health = await check_ollama_health()
+    if health["status"] == "healthy":
+        logger.info(f"✅ Ollama connected | Models: {health['models']}")
+    else:
+        logger.warning(f"⚠️  Ollama check failed: {health.get('error')}")
+        logger.warning("   Ensure Ollama is running: ollama serve")
+
+    logger.info(f"✅ Nexus Memory ready on http://{settings.HOST}:{settings.PORT}")
+
+    yield
+
+    # Shutdown
+    logger.info("Shutting down Nexus Memory...")
+
+
+app = FastAPI(
+    title=settings.APP_NAME,
+    version=settings.APP_VERSION,
+    description="Local AI Assistant with Persistent Memory and PDF Chat",
+    lifespan=lifespan,
+)
+
+# CORS Configuration
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "http://localhost:5173",
+        "http://localhost:3000",
+        "http://127.0.0.1:5173",
+    ],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+# Routes
+app.include_router(chat.router, tags=["Chat"])
+app.include_router(upload.router, tags=["Documents"])
+app.include_router(memory.router, tags=["Memory"])
+
+
+@app.get("/")
+async def root():
+    return {
+        "name": settings.APP_NAME,
+        "version": settings.APP_VERSION,
+        "status": "running",
+    }
+
+
+@app.get("/health")
+async def health_check():
+    ollama_status = await check_ollama_health()
+    return {
+        "api": "healthy",
+        "ollama": ollama_status,
+        "model": settings.OLLAMA_MODEL,
+    }
+
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(
+        "main:app",
+        host=settings.HOST,
+        port=settings.PORT,
+        reload=settings.DEBUG,
+    )
