@@ -90,7 +90,9 @@ Built in one day as a focused demonstration of modern AI engineering — clean a
   <img src="screenshots/Screenshot 2026-05-28 at 3.54.37 PM.png" width="100%" />
   &nbsp;&nbsp;&nbsp;&nbsp;
   <br><br>
-  
+  <img src="screenshots/Screenshot 2026-05-28 at 3.54.05 PM.png" width="100%" />
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <br><br>
 </p>
 
 
