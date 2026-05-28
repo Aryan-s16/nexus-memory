@@ -1,4 +1,4 @@
-# ⚡ Nexus Memory
+# Nexus Memory
 
 > A local AI assistant that **remembers you**, answers questions from your **documents**, and runs **entirely on your machine** — no cloud, no subscriptions, no data leaving your device.
 
@@ -18,7 +18,7 @@
 
 ---
 
-## 🧠 What Is Nexus Memory?
+## What Is Nexus Memory?
 
 Nexus Memory is a **production-inspired local AI assistant** built to demonstrate practical AI engineering skills. Unlike generic chatbots, Nexus Memory:
 
@@ -32,9 +32,9 @@ Built in one day as a focused demonstration of modern AI engineering — clean a
 
 ---
 
-## ✨ Features
+## Features
 
-### 💬 Conversational Chat
+### Conversational Chat
 
 - ChatGPT-style streaming interface with real-time token rendering
 - Markdown rendering with code blocks, tables, and formatting
@@ -43,7 +43,7 @@ Built in one day as a focused demonstration of modern AI engineering — clean a
 - Copy message button on every bubble
 - Typing indicator during response generation
 
-### 🧠 Persistent Memory System
+### Persistent Memory System
 
 - **Automatic memory extraction** — AI identifies and stores important facts from your conversation
 - **Semantic memory retrieval** — finds relevant memories using vector similarity search
@@ -52,7 +52,7 @@ Built in one day as a focused demonstration of modern AI engineering — clean a
 - Categories: `technical`, `professional`, `preference`, `goal`, `general`
 - Backed by SQLite (structured) + ChromaDB (semantic search)
 
-### 📄 PDF / Document Chat (RAG)
+### PDF / Document Chat (RAG)
 
 - Upload **PDF**, **TXT**, and **Markdown** files
 - Automatic text extraction and intelligent chunking
@@ -61,14 +61,14 @@ Built in one day as a focused demonstration of modern AI engineering — clean a
 - Source-aware answers with document chunk badges
 - Multi-document support — query across multiple files simultaneously
 
-### 🤖 Local LLM Integration
+### Local LLM Integration
 
 - Powered by **Ollama** — runs llama3, mistral, and any installed model
 - Live model selector dropdown — switch models mid-conversation
 - No API keys, no rate limits, no cloud dependency
 - Streaming responses via Server-Sent Events (SSE)
 
-### 🎨 Modern Dark UI
+### Modern Dark UI
 
 - Clean dark theme with indigo/purple accent colors
 - Smooth Framer Motion animations throughout
@@ -78,7 +78,13 @@ Built in one day as a focused demonstration of modern AI engineering — clean a
 
 ---
 
-## 🏗️ Architecture
+![Demo Image](screenshots/Screenshot 2026-05-28 at 3.43.58 PM.png)
+![Demo Image](screenshots/Screenshot 2026-05-28 at 3.50.11 PM.png)
+![Demo Image](screenshots/Screenshot 2026-05-28 at 3.53.43 PM.png)
+![Demo Image](screenshots/Screenshot 2026-05-28 at 3.54.37 PM.png)
+![Demo Image](screenshots/Screenshot 2026-05-28 at 3.54.55 PM.png)
+
+## Architecture
 
 ### System Overview
 
@@ -286,7 +292,7 @@ LLM Extracts Facts
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 | Layer              | Technology                     | Purpose                      |
 | ------------------ | ------------------------------ | ---------------------------- |
@@ -308,7 +314,7 @@ LLM Extracts Facts
 
 ---
 
-## 📋 Requirements
+## Requirements
 
 ### System Requirements
 
@@ -373,7 +379,7 @@ uuid: ^10.0.0
 
 ---
 
-# 🚀 Setup
+# Setup
 
 ## Step 1 — Clone the Repository
 
@@ -479,7 +485,7 @@ Open `http://localhost:5173` — you should see the dark Nexus Memory interface.
 
 ---
 
-# 📁 Project Structure
+# Project Structure
 
 ```text
 nexus-memory/
@@ -548,7 +554,7 @@ nexus-memory/
 
 ---
 
-# 📖 Usage Guide
+# Usage Guide
 
 ## Basic Chat
 
@@ -634,7 +640,7 @@ Click any model to switch for the next message
 
 ---
 
-# 🔌 API Reference
+# API Reference
 
 ## Chat
 
@@ -712,7 +718,7 @@ session_id: "uuid-here"
 
 ---
 
-# ⚡ Quick Commands
+#  Quick Commands
 
 ```bash
 # ── Start All Services ──────────────────────────────────────────
@@ -791,7 +797,7 @@ pip install -r requirements.txt
 
 ---
 
-# 📄 License
+# License
 
 ```text
 MIT License
